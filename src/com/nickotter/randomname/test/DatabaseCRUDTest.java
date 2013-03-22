@@ -21,14 +21,17 @@ public class DatabaseCRUDTest extends AndroidTestCase {
 	CRUD databaseCRUD = null;
 	
 	public void setUp() {
-		Log.v(LOGTAG, "test_InitializingCRUD e");
+		Log.v(LOGTAG, "setUp e");
+		
+		Log.v(LOGTAG, "Deleting DATABASE_NAME="+ Sqlite.DATABASE_NAME);
+		getContext().deleteDatabase(Sqlite.DATABASE_NAME);
 
 		Log.v(LOGTAG, "Initializing CRUD object");
 		
 		this.databaseCRUD = new CRUD(getContext());
 		this.databaseCRUD.open();
 		
-		Log.v(LOGTAG, "test_InitializingCRUD x");
+		Log.v(LOGTAG, "setUp x");
 	}
 	
 	public void tearDown() {
