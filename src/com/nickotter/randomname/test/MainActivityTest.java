@@ -5,12 +5,12 @@ import com.nickotter.randomname.MainActivity;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-public class MainTestCase extends
+public class MainActivityTest extends
 		ActivityInstrumentationTestCase2<MainActivity> {
 
 	private Solo solo;
 
-	public MainTestCase() {
+	public MainActivityTest() {
 		super(MainActivity.class);
 
 	}
@@ -19,8 +19,28 @@ public class MainTestCase extends
 		super.setUp();
 		solo = new Solo(getInstrumentation(), getActivity());
 	}
+	
+	/*public void testOpenSideDrawer() {
+		
+		solo.assertCurrentActivity("The App should launch", MainActivity.class);
+		
+		solo.clickOnActionBarHomeButton();
+		
+	}*/
+	
+	public void testChangeActionBarTab() {
+		
+		solo.assertCurrentActivity("The App should launch", MainActivity.class);
+		
+		solo.clickOnActionBarItem(1);
+		
+		
+		
+		solo.clickOnActionBarItem(2);
+		
+	}
 
-	public void test___(){
+	/*public void test___(){
 
 		solo.assertCurrentActivity("The App should lauch", MainActivity.class);
 
@@ -28,7 +48,7 @@ public class MainTestCase extends
 
 		solo.clickOnImage(0);
 
-		solo.clickOnImage(0);
+	T	solo.clickOnImage(0);
 
 		solo.assertCurrentActivity("The App should lauch", MainActivity.class);
 
@@ -41,7 +61,7 @@ public class MainTestCase extends
 		solo.clickOnActionBarItem(3);
 		solo.clickOnActionBarItem(4);
 		solo.clickOnActionBarItem(5);
-	}
+	}*/
 
 
 }

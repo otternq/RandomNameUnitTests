@@ -13,7 +13,7 @@ public class AllTests extends TestSuite {
 		suite.addTest(new DatabaseCRUDTest("testQueryGroup"));
 		suite.addTest(new DatabaseCRUDTest("testAddList"));
 		
-		suite.addTestSuite(MainTestCase.class);
+		suite.addTestSuite(MainActivityTest.class);
 		
 		return suite;
 	}
