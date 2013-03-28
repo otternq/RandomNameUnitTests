@@ -42,6 +42,7 @@ public class DatabaseCRUDTest extends AndroidTestCase {
 	 * Tests that databaseCRUd can insert a Group
 	 */
 	public void testAddGroup() {
+		
 		Group temp = new Group("CS480");
 		this.databaseCRUD.add_group(temp);
 		
@@ -68,6 +69,7 @@ public class DatabaseCRUDTest extends AndroidTestCase {
 	public void testAddList() {
 		
 		Group tempGroup = new Group("CS480");
+		
 		this.databaseCRUD.add_group(tempGroup);
 		
 		MyList temp = new MyList(0, tempGroup.getID(), "Test List Name");
