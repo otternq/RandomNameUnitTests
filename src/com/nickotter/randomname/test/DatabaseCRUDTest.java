@@ -17,6 +17,10 @@ public class DatabaseCRUDTest extends AndroidTestCase {
 	
 	Context context = null;
 	CRUD databaseCRUD = null;
+	
+	public DatabaseCRUDTest(String name) {
+		this.setName(name);
+	}
 
 	public void setUp() {
 		Log.v(LOGTAG, "setUp e");

@@ -6,10 +6,15 @@ import junit.framework.TestSuite;
 public class AllTests extends TestSuite {
 
 	public static Test suite() {
+		
 		TestSuite suite = new TestSuite(AllTests.class.getName());
-		//$JUnit-BEGIN$
-		suite.addTestSuite(DatabaseCRUDTest.class);
-		//$JUnit-END$
+		
+		suite.addTest(new DatabaseCRUDTest("testAddGroup"));
+		suite.addTest(new DatabaseCRUDTest("testQueryGroup"));
+		suite.addTest(new DatabaseCRUDTest("testAddList"));
+		
+		suite.addTestSuite(MainTestCase.class);
+		
 		return suite;
 	}
 
