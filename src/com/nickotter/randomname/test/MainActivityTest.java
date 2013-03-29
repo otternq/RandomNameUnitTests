@@ -20,48 +20,20 @@ public class MainActivityTest extends
 		solo = new Solo(getInstrumentation(), getActivity());
 	}
 	
-	/*public void testOpenSideDrawer() {
+	public void testOpenSideDrawer() {
 		
 		solo.assertCurrentActivity("The App should launch", MainActivity.class);
 		
-		solo.clickOnActionBarHomeButton();
+		solo.clickOnImage(0);
+		assertFalse(getActivity().mNav.isClosed());
 		
-	}*/
+	}
 	
 	public void testChangeActionBarTab() {
 		
 		solo.assertCurrentActivity("The App should launch", MainActivity.class);
 		
-		solo.clickOnActionBarItem(1);
-		
-		
-		
-		solo.clickOnActionBarItem(2);
-		
 	}
-
-	/*public void test___(){
-
-		solo.assertCurrentActivity("The App should lauch", MainActivity.class);
-
-		solo.sendKey(Solo.MENU);
-
-		solo.clickOnImage(0);
-
-	T	solo.clickOnImage(0);
-
-		solo.assertCurrentActivity("The App should lauch", MainActivity.class);
-
-//		solo.clickOnMenuItem("LIST 2");
-
-		solo.clickOnButton(2);
-
-		solo.clickOnActionBarItem(1);
-		solo.clickOnActionBarItem(2);
-		solo.clickOnActionBarItem(3);
-		solo.clickOnActionBarItem(4);
-		solo.clickOnActionBarItem(5);
-	}*/
 
 
 }
