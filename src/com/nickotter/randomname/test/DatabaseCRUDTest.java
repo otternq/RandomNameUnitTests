@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.nickotter.randomname.CRUD;
 import com.nickotter.randomname.Group;
+import com.nickotter.randomname.Item;
 import com.nickotter.randomname.MyList;
 import com.nickotter.randomname.Sqlite;
 import android.content.Context;
@@ -105,6 +106,46 @@ public class DatabaseCRUDTest extends AndroidTestCase {
 			assertEquals(expectedID[i], tempList.get(i).getID());
 			assertEquals(expectedName[i], tempList.get(i).getName());
 		}
+		
+	}
+	
+	//Item Test
+	
+	public void testAddItem() {
+		
+		String[] expectedGroup = {"CS428"};
+		String[] expectedList = {"Test List Name"};
+		String[] expectedItem = {"Test Item Name", "Test List Name 2"};
+		
+		int[] expectedListID = {1};
+		int[] expectedGroupID = {1};
+		int[] expectedItemID = {1,2};
+		//add a group
+		Group tempGroup = new Group(expectedGroup[0]);
+		
+		this.databaseCRUD.add_group(tempGroup);
+		
+		assertEquals(expectedGroupID[0], tempGroup.getID());
+		
+		//add a list
+		MyList tempList = new MyList(0, tempGroup.getID(), expectedList[0]);
+		
+		databaseCRUD.add_list(tempGroup, tempList); //add the list to the database
+		
+		assertEquals(expectedListID[0], tempList.getID());
+		
+		//add an item
+		Item[] tempItem = {
+			new Item(0, tempList.getID(), expectedItem[0]), 
+			new Item(0, tempList.getID(), expectedItem[1])
+		};
+		
+		this.databaseCRUD.add_item(tempList, tempItem[0]);
+		this.databaseCRUD.add_item(tempList, tempItem[1]);
+		
+		assertEquals(expectedItemID[0], tempItem[0].getID());
+		assertEquals(expectedItemID[1], tempItem[1].getID());
+		
 		
 	}
 
