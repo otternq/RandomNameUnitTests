@@ -15,6 +15,8 @@ public class AllTests extends TestSuite {
 		
 		suite.addTestSuite(MainActivityTest.class);
 		
+		suite.addTestSuite(AddGroupTest.class);
+		
 		return suite;
 	}
 

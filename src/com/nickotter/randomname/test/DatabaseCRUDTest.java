@@ -82,5 +82,31 @@ public class DatabaseCRUDTest extends AndroidTestCase {
 		
 		assertEquals(1, temp.getID());
 	}
+	
+	public void testQueryList() {
+		
+		Group tempGroup = new Group("CS428");
+		
+		this.databaseCRUD.add_group(tempGroup);
+		
+		assertEquals(1, tempGroup.getID());
+		
+		MyList temp = new MyList(0, tempGroup.getID(), "Test List Name");
+		
+		databaseCRUD.add_list(tempGroup, temp); //add the list to the database
+		
+		List<MyList> tempList = databaseCRUD.query_list(tempGroup);
+		
+		String[] expectedName = {"Test List Name"};
+		int[] expectedID = {1};
+		int[] expectedGroupID = {1};
+		
+		for (int i = 0; i < tempList.size(); i++) {
+			assertEquals(expectedID[i], tempList.get(i).getID());
+			assertEquals(expectedName[i], tempList.get(i).getName());
+			assertEquals(expectedGroupID[i], tempList.get(i).getGroupID());
+		}
+		
+	}
 
 }
