@@ -5,7 +5,6 @@ import java.util.List;
 import android.content.Context;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
-import android.widget.EditText;
 
 import com.jayway.android.robotium.solo.Solo;
 import com.nickotter.randomname.CRUD;
@@ -70,6 +69,24 @@ public class AddGroupTest extends ActivityInstrumentationTestCase2<MainActivity>
 		}
 		
 		assertTrue(found);
+	}
+	
+	public void testAddGroupCancel() {
+		
+		solo.assertCurrentActivity("The App should launch", MainActivity.class);
+		solo.assertCurrentActivity("This test should start at the MainActivity Activity", MainActivity.class);
+		
+		//switch to the AddGroup Activity
+		solo.clickOnImage(0);
+		solo.clickOnButton("Add Group");
+		
+		solo.assertCurrentActivity("This test should have changed to the AddGroup Activity", AddGroup.class);
+		
+		solo.clickOnButton("Cancel");
+		
+		solo.waitForActivity("MainActivity");
+		solo.assertCurrentActivity("The App should go back to the MainActivity", MainActivity.class);
+		
 	}
 
 
