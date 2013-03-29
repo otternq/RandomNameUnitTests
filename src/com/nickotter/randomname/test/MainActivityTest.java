@@ -25,7 +25,7 @@ public class MainActivityTest extends
 		solo.assertCurrentActivity("The App should launch", MainActivity.class);
 		
 		solo.clickOnImage(0);
-		assertFalse(getActivity().mNav.isClosed());
+		assertTrue(getActivity().mNav.isShown());
 		
 	}
 	
