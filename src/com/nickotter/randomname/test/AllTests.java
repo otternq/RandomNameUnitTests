@@ -9,13 +9,17 @@ public class AllTests extends TestSuite {
 		
 		TestSuite suite = new TestSuite(AllTests.class.getName());
 		
+		//test the MainActivity Activity
+		suite.addTestSuite(MainActivityTest.class);
+		
+		//test the AddGroup Activity
+		suite.addTestSuite(AddGroupTest.class);
+		
+		//test CRUD operations
 		suite.addTest(new DatabaseCRUDTest("testAddGroup"));
 		suite.addTest(new DatabaseCRUDTest("testQueryGroup"));
 		suite.addTest(new DatabaseCRUDTest("testAddList"));
-		
-		suite.addTestSuite(MainActivityTest.class);
-		
-		suite.addTestSuite(AddGroupTest.class);
+		suite.addTest(new DatabaseCRUDTest("testAddItem"));
 		
 		return suite;
 	}
