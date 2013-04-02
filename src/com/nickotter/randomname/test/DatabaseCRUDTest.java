@@ -84,14 +84,14 @@ public class DatabaseCRUDTest extends AndroidTestCase {
 		databaseCRUD.add_list(tempGroup, temp2);
 		
 		assertEquals(1, temp.getID());
-		assertEquals(2, temp.getID());
+		assertEquals(2, temp2.getID());
 	}
 	
 	public void testQueryList() {
 		
-		String[] expectedName = {"Test List Name"};
-		int[] expectedID = {1};
-		int[] expectedGroupID = {1};
+		String[] expectedName = {"Test List Name", "Test List Name 2"};
+		int[] expectedID = {1,2};
+		int[] expectedGroupID = {1,1};
 		
 		Group tempGroup = new Group("CS428");
 		
@@ -100,8 +100,10 @@ public class DatabaseCRUDTest extends AndroidTestCase {
 		assertEquals(expectedGroupID[0], tempGroup.getID());
 		
 		MyList temp = new MyList(0, tempGroup.getID(), expectedName[0]);
+		MyList temp2 = new MyList(0, tempGroup.getID(), expectedName[1]);
 		
 		databaseCRUD.add_list(tempGroup, temp); //add the list to the database
+		databaseCRUD.add_list(tempGroup, temp2); //add the list to the database
 		
 		List<MyList> tempList = databaseCRUD.query_list(tempGroup);
 		
