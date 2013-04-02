@@ -31,7 +31,7 @@ public class AddGroupTest extends ActivityInstrumentationTestCase2<MainActivity>
 		
 		this.context = this.getInstrumentation().getTargetContext().getApplicationContext();
 		
-		this.context.deleteDatabase(Sqlite.DATABASE_NAME);
+		//this.context.deleteDatabase(Sqlite.DATABASE_NAME);
 		
 		this.databaseCRUD = new CRUD(this.context);
 		this.databaseCRUD.open();
@@ -58,6 +58,7 @@ public class AddGroupTest extends ActivityInstrumentationTestCase2<MainActivity>
 		solo.waitForActivity("MainActivity");
 		solo.assertCurrentActivity("The App should go back to the MainActivity", MainActivity.class);
 		
+		//check that the group was added to the interface
 		List<Group> groupList = this.databaseCRUD.query_group();
 		
 		boolean found = false;
@@ -73,6 +74,7 @@ public class AddGroupTest extends ActivityInstrumentationTestCase2<MainActivity>
 		}
 		
 		assertTrue(found);
+		
 	}
 	
 	public void testAddGroupCancel() {

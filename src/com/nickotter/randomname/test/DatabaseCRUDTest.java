@@ -78,10 +78,13 @@ public class DatabaseCRUDTest extends AndroidTestCase {
 		this.databaseCRUD.add_group(tempGroup);
 		
 		MyList temp = new MyList(0, tempGroup.getID(), "Test List Name");
+		MyList temp2 = new MyList(0, tempGroup.getID(), "Test List Name 2");
 		
 		databaseCRUD.add_list(tempGroup, temp); //add the list to the database
+		databaseCRUD.add_list(tempGroup, temp2);
 		
 		assertEquals(1, temp.getID());
+		assertEquals(2, temp.getID());
 	}
 	
 	public void testQueryList() {
@@ -145,6 +148,60 @@ public class DatabaseCRUDTest extends AndroidTestCase {
 		
 		assertEquals(expectedItemID[0], tempItem[0].getID());
 		assertEquals(expectedItemID[1], tempItem[1].getID());
+		
+		
+	}
+	
+	public void testQueryItem() {
+		
+		Log.v(LOGTAG, "\tcreating groups start");
+		Group g1 = new Group("CS480");
+		Group g2 = new Group("CS481");
+		Log.v(LOGTAG, "\tcreating groups end");
+		
+		MyList l1 = new MyList(0, g1.getID(), "List 1");
+		MyList l2 = new MyList(0, g1.getID(), "List 2");
+		MyList l3 = new MyList(0, g2.getID(), "List 3");
+		
+		Log.v(LOGTAG, "Adding Groups");
+		databaseCRUD.add_group(g1);
+		Log.v(LOGTAG, "Group 1 now has id="+ g1.getID());
+		
+		databaseCRUD.add_group(g2);
+		Log.v(LOGTAG, "Group 2 now has id="+ g2.getID());
+		
+		Log.v(LOGTAG, "Adding Lists");
+		databaseCRUD.add_list(g1, l1);
+		databaseCRUD.add_list(g1, l2);
+		databaseCRUD.add_list(g2, l3);
+		
+		Log.v(LOGTAG, "Adding Items");
+		Item i1 = new Item(0, l1.getID(), "List 1 - Item 1");
+		Item i2 = new Item(0, l1.getID(), "List 1 - Item 2");
+		Item i3 = new Item(0, l2.getID(), "List 2 - Item 3");
+		Item i4 = new Item(0, l2.getID(), "List 2 - Item 4");
+		Item i5 = new Item(0, l3.getID(), "List 3 - Item 5");
+		
+		databaseCRUD.add_item(l1, i1);
+		databaseCRUD.add_item(l1, i2);
+		databaseCRUD.add_item(l2, i3);
+		databaseCRUD.add_item(l2, i4);
+		databaseCRUD.add_item(l3, i5);
+		
+		//check list 1
+		List<Item> retItems = databaseCRUD.query_item(l1);
+		assertEquals("List 1 - Item 1", retItems.get(0).getName());
+		assertEquals("List 1 - Item 2", retItems.get(1).getName());
+		
+		//check list 2
+		retItems = databaseCRUD.query_item(l2);
+		assertEquals("List 2 - Item 3", retItems.get(0).getName());
+		assertEquals("List 2 - Item 4", retItems.get(1).getName());
+		
+		//check list 3
+		retItems = databaseCRUD.query_item(l3);
+		assertEquals("List 3 - Item 5", retItems.get(0).getName());
+		
 		
 		
 	}
