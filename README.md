@@ -11,5 +11,4 @@ Spoon Execution:
 * sppon client jar can be found at: http://square.github.com/spoon/
 * go to terminal & run following command: 
 java -jar ./spoon-runner-1.0.2-jar-with-dependencies.jar --apk MainActivity.apk --test-apk RandomNameUnitTests.apk --sdk your-android-sdk-path
-
 (MainActivity.apk & RandomNameUnitTests.apk can be found in your workspace under bin directory) 
