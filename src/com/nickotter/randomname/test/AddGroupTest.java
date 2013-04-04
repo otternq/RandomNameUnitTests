@@ -12,6 +12,7 @@ import com.nickotter.randomname.Group;
 import com.nickotter.randomname.MainActivity;
 import com.nickotter.randomname.Sqlite;
 import com.nickotter.randomname.crudActivities.AddGroup;
+import com.squareup.spoon.Spoon;
 
 public class AddGroupTest extends ActivityInstrumentationTestCase2<MainActivity> {
 	
@@ -38,6 +39,8 @@ public class AddGroupTest extends ActivityInstrumentationTestCase2<MainActivity>
 	}
 	
 	public void testAddGroupSave() {
+		
+		Spoon.screenshot(getActivity(), "initialize");
 		
 		solo.assertCurrentActivity("The App should launch", MainActivity.class);
 		solo.assertCurrentActivity("This test should start at the MainActivity Activity", MainActivity.class);
@@ -75,6 +78,7 @@ public class AddGroupTest extends ActivityInstrumentationTestCase2<MainActivity>
 		
 		assertTrue(found);
 		
+		Spoon.screenshot(getActivity(), "after");
 	}
 	
 	public void testAddGroupCancel() {
@@ -94,6 +98,8 @@ public class AddGroupTest extends ActivityInstrumentationTestCase2<MainActivity>
 		solo.waitForActivity("MainActivity");
 		solo.assertCurrentActivity("The App should go back to the MainActivity", MainActivity.class);
 		
+		Spoon.screenshot(getActivity(), "initialize");
+		
 	}
 	
 	public void testAddGroupHome() {
@@ -112,6 +118,8 @@ public class AddGroupTest extends ActivityInstrumentationTestCase2<MainActivity>
 		
 		solo.waitForActivity("MainActivity");
 		solo.assertCurrentActivity("The App should go back to the MainActivity", MainActivity.class);
+		
+		Spoon.screenshot(getActivity(), "initialize");
 		
 	}
 
