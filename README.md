@@ -14,3 +14,6 @@ Spoon Execution:
 java -jar ./spoon-runner-1.0.2-jar-with-dependencies.jar --apk MainActivity.apk --test-apk RandomNameUnitTests.apk --sdk your-android-sdk-path
 
 (MainActivity.apk & RandomNameUnitTests.apk can be found in your workspace under bin directory) 
+
+You might want to group spoon-runner with *.apk files under the same directory, and the test output will be in ./spoon-output
+click on index.html to see the result !!!
