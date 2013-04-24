@@ -2,10 +2,16 @@ package com.nickotter.randomname.test;
 
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
+import android.view.Window;
 
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.actionbarsherlock.internal.ActionBarSherlockCompat;
+import com.actionbarsherlock.internal.view.menu.ActionMenuItem;
 import com.jayway.android.robotium.solo.Solo;
 import com.nickotter.randomname.CRUD;
 import com.nickotter.randomname.Group;
@@ -36,6 +42,19 @@ public class AddGroupTest extends ActivityInstrumentationTestCase2<MainActivity>
 		
 		this.databaseCRUD = new CRUD(this.context);
 		this.databaseCRUD.open();
+	}
+	
+	public static void clickOnUpActionBarButton(Solo solo) {
+	    if (Build.VERSION.SDK_INT < 15) {
+	        Activity activity = solo.getCurrentActivity();
+
+	        ActionMenuItem logoNavItem = new ActionMenuItem(activity, 0, android.R.id.home, 0, 0, "");
+	        ActionBarSherlockCompat absc = (ActionBarSherlockCompat) UiTestUtils.invokePrivateMethodWithoutParameters(
+	                SherlockFragmentActivity.class, "getSherlock", activity);
+	        absc.onMenuItemSelected(Window.FEATURE_OPTIONS_PANEL, logoNavItem);
+	    } else { // Working on latest sdk versions (above 4.0)
+	        solo.clickOnView(solo.getView(android.R.id.home));
+	    }
 	}
 	
 	public void testAddGroupSave() {
