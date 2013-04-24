@@ -42,7 +42,7 @@ public class MainActivityTest extends
 		
 		solo.assertCurrentActivity("The App should start at MainActivity", MainActivity.class);
 		
-		solo.clickOnImage(0);
+		//solo.clickOnImage(0);
 		assertTrue(getActivity().settingsNav.isShown());
 		
 		solo.clickOnButton("CS481");
